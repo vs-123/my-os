@@ -24,10 +24,8 @@ impl Screen {
             unsafe { core::slice::from_raw_parts_mut(VGA_ADDRESS as *mut u8, self.dimension) };
         match c {
             '\x08' => {
-                if self.cursor_x > 0 {
-                    self.cursor_x -= 1;
-                    video_memory[self.cursor_y * self.width + self.cursor_x * self.dimension] = 0;
-                }
+                self.cursor_x -= 2;
+                video_memory[self.cursor_y * self.width + self.cursor_x] = ' ' as u8;
             }
 
             '\x09' => {
