@@ -1,5 +1,6 @@
 const VGA_ADDRESS: usize = 0xb8000;
 
+#[derive(Clone)]
 pub struct Screen {
     cursor_x: usize,
     cursor_y: usize,

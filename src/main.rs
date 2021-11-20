@@ -14,10 +14,9 @@ use screen::Screen;
 pub extern "C" fn _start() -> ! {
     let mut screen = Screen::new(0, 0, 80, 25);
     screen.print("\nEnter your name: ");
-    let mut keyboard_input = kb::KeyboardInput::new(&mut screen);
-    let name = keyboard_input.read_str();
+    keyboard_input!(screen, name);
     screen.print("\nHello, ");
-    screen.print(core::str::from_utf8(&name).unwrap());
+    screen.print(name);
     screen.print("!");
     loop {}
 }
